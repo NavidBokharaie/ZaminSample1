@@ -4,13 +4,13 @@ using Zamin.Core.ApplicationServices.Queries;
 using Zamin.Core.Contracts.ApplicationServices.Queries;
 using Zamin.Utilities;
 
-namespace MiniBlog.Core.ApplicationService.People.Queries.GetPersonByBusinessId;
+namespace MiniBlog.Core.ApplicationService.People.Queries.GetPersonById;
 
-public class GetPersonByBusinessIdHandler : QueryHandler<GetPersonByIdQuery, PersonByIdDto>
+public class GetPersonByIdHandler : QueryHandler<GetPersonByIdQuery, PersonByIdDto>
 {
     private readonly IPersonQueryRepository _personQueryRepository;
 
-    public GetPersonByBusinessIdHandler(ZaminServices zaminServices,
+    public GetPersonByIdHandler(ZaminServices zaminServices,
                                       IPersonQueryRepository personQueryRepository) : base(zaminServices)
     {
         _personQueryRepository = personQueryRepository;

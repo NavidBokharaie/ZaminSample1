@@ -2,10 +2,10 @@
 using MiniBlog.Core.Contracts.People.Queries.GetPersonById;
 using Zamin.Extensions.Translations.Abstractions;
 
-namespace MiniBlog.Core.ApplicationService.People.Queries.GetPersonByBusinessId;
-public class GetPersonByBusinessIdValidator : AbstractValidator<GetPersonByIdQuery>
+namespace MiniBlog.Core.ApplicationService.People.Queries.GetPersonById;
+public class GetPersonByIdValidator : AbstractValidator<GetPersonByIdQuery>
 {
-    public GetPersonByBusinessIdValidator(ITranslator translator)
+    public GetPersonByIdValidator(ITranslator translator)
     {
         RuleFor(query => query.BusinessId)
             .NotEmpty()
