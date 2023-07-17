@@ -1,0 +1,17 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/src/1.Core/Miniblog.Core.ApplicationService/bin
+/src/1.Core/MiniBlog.Core.Contracts/bin
+/src/1.Core/MiniBlog.Core.Domain/bin
+/src/2.Infra/Data/MiniBlog.Infra.Data.Sql.Commands/bin
+/src/2.Infra/Data/MiniBlog.Infra.Data.Sql.Queries/bin
+/src/3.Endpoints/MiniBlog.Endpoints.API/bin
+/src/1.Core/Miniblog.Core.ApplicationService/obj
+/src/1.Core/MiniBlog.Core.Contracts/obj
+/src/1.Core/MiniBlog.Core.Domain/obj
+/src/2.Infra/Data/MiniBlog.Infra.Data.Sql.Commands/obj
+/src/2.Infra/Data/MiniBlog.Infra.Data.Sql.Queries/obj
+/src/3.Endpoints/MiniBlog.Endpoints.API/obj
