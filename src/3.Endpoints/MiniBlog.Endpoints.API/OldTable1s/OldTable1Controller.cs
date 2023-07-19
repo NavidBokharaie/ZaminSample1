@@ -23,7 +23,7 @@ public class OldTable1Controller : BaseController
     }
 
     [HttpGet("[action]")]
-    public async Task<IActionResult> GetOldTable1ByBusinessId(GetOldTable1ByIdQuery query)
+    public async Task<IActionResult> GetOldTable1ById(GetOldTable1ByIdQuery query)
     {
         return await Query<GetOldTable1ByIdQuery, OldTable1ByIdDto>(query);
     }

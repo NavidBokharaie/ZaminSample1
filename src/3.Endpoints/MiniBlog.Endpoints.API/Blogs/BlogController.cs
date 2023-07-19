@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MiniBlog.Core.Contracts.Blogs.Commands.CreateBlog;
-using MiniBlog.Core.Contracts.Blogs.Queries.GetBlogByBusinessId;
+using MiniBlog.Core.Contracts.Blogs.Queries.GetBlogById;
 using Zamin.EndPoints.Web.Controllers;
 
 namespace MiniBlog.Endpoints.API.Blogs
@@ -13,7 +13,7 @@ namespace MiniBlog.Endpoints.API.Blogs
             => await Create<CreateBlogCommand, Guid>(createBlog);
 
         [HttpGet("[action]")]
-        public async Task<IActionResult> GetBlogByBusinessId(GetBlogByIdQuery query)
+        public async Task<IActionResult> GetBlogById(GetBlogByIdQuery query)
             => await Query<GetBlogByIdQuery, BlogQr>(query);
 
         [HttpGet("/Clear")]

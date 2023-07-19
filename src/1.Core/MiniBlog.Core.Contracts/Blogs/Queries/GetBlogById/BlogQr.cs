@@ -1,4 +1,4 @@
-﻿namespace MiniBlog.Core.Contracts.Blogs.Queries.GetBlogByBusinessId;
+﻿namespace MiniBlog.Core.Contracts.Blogs.Queries.GetBlogById;
 
 public class BlogQr
 {

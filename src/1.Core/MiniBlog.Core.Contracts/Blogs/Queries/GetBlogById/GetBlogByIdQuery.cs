@@ -1,6 +1,6 @@
 ﻿using Zamin.Core.Contracts.ApplicationServices.Queries;
 
-namespace MiniBlog.Core.Contracts.Blogs.Queries.GetBlogByBusinessId;
+namespace MiniBlog.Core.Contracts.Blogs.Queries.GetBlogById;
 
 public class GetBlogByIdQuery : IQuery<BlogQr>
 {

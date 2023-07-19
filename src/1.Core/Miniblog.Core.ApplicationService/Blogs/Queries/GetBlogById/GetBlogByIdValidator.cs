@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
-using MiniBlog.Core.Contracts.Blogs.Queries.GetBlogByBusinessId;
+using MiniBlog.Core.Contracts.Blogs.Queries.GetBlogById;
 using Zamin.Extensions.Translations.Abstractions;
 
-namespace MiniBlog.Core.ApplicationService.Blogs.Queries.GetBlogByBusinessId;
+namespace MiniBlog.Core.ApplicationService.Blogs.Queries.GetBlogById;
 public class GetBlogByIdValidator : AbstractValidator<GetBlogByIdQuery>
 {
     public GetBlogByIdValidator(ITranslator translator)

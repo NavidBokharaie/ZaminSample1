@@ -1,10 +1,10 @@
 ﻿using MiniBlog.Core.Contracts.Blogs.Queries;
-using MiniBlog.Core.Contracts.Blogs.Queries.GetBlogByBusinessId;
+using MiniBlog.Core.Contracts.Blogs.Queries.GetBlogById;
 using Zamin.Core.ApplicationServices.Queries;
 using Zamin.Core.Contracts.ApplicationServices.Queries;
 using Zamin.Utilities;
 
-namespace MiniBlog.Core.ApplicationService.Blogs.Queries.GetBlogByBusinessId;
+namespace MiniBlog.Core.ApplicationService.Blogs.Queries.GetBlogById;
 public class GetBlogByIdHandler : QueryHandler<GetBlogByIdQuery, BlogQr>
 {
     private readonly IBlogQueryRepository _blogQueryRepository;

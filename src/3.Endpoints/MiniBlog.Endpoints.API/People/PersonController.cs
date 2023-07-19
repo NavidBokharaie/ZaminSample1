@@ -24,7 +24,7 @@ public class PersonController : BaseController
     }
 
     [HttpGet("[action]")]
-    public async Task<IActionResult> GetPersonByBusinessId(GetPersonByIdQuery query)
+    public async Task<IActionResult> GetPersonById(GetPersonByIdQuery query)
     {
         return await Query<GetPersonByIdQuery, PersonByIdDto>(query);
     }

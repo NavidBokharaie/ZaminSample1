@@ -1,4 +1,4 @@
-﻿using MiniBlog.Core.Contracts.Blogs.Queries.GetBlogByBusinessId;
+﻿using MiniBlog.Core.Contracts.Blogs.Queries.GetBlogById;
 
 namespace MiniBlog.Core.Contracts.Blogs.Queries;
 
