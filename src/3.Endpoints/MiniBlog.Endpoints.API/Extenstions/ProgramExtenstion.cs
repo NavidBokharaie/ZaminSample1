@@ -4,29 +4,16 @@ namespace MiniBlog.Endpoints.API.Extenstions;
 
 public static class ProgramExtensions
 {
-	public static IHostBuilder DefaultHostBuilder(this IHostBuilder host, params string[] appSettingFiles)
-	{
-		return host
-			.ConfigureAppConfiguration((ctx, config) =>
-			{
-				config.AddAppSettings(appSettingFiles);
-			})
-			.UseSerilog((ctx, lc) =>
-			{
-				lc.ReadFrom
-					.Configuration(ctx.Configuration);
-			});
-	}
-
 	public static WebApplicationBuilder CreateHostBuilder(string[] args, params string[] appSettingFiles)
 	{
 		var builder = WebApplication.CreateBuilder(args);
 
 		builder.Configuration.AddAppSettings(appSettingFiles);
 
-		builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
-
 		builder.AddLogger(appSettingFiles);
+
+		builder.Host.UseSerilog(Log.Logger);
+
 
 		return builder;
 	}

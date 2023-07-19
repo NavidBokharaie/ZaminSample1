@@ -1,15 +1,20 @@
 using MiniBlog.Endpoints.API;
+using MiniBlog.Endpoints.API.Extenstions;
 using Zamin.Extensions.DependencyInjection;
-using Zamin.Utilities.SerilogRegistration.Extensions;
 
-SerilogExtensions.RunWithSerilogExceptionHandling(() =>
+var builder = ProgramExtensions.CreateHostBuilder(args, "appsettings.json", "appsettings.Development.json", "appsettings.saapp.json", "appsettings.serilog.json");
+
+
+builder.RunWithSerilogExceptionHandling(() =>
 {
-    var builder = WebApplication.CreateBuilder(args);
-    var app = builder.AddZaminSerilog(c =>
+    builder.AddZaminSerilog(c =>
     {
         c.ApplicationName = "Miniblog";
         c.ServiceName = "MiniblogService";
         c.ServiceVersion = "1.0";
-    }).ConfigureServices().ConfigurePipeline();
+    });
+
+    var app = builder.ConfigureServices().ConfigurePipeline();
+
     app.Run();
 });
