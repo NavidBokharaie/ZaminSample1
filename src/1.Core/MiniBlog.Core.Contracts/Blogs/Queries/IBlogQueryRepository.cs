@@ -4,5 +4,5 @@ namespace MiniBlog.Core.Contracts.Blogs.Queries;
 
 public interface IBlogQueryRepository
 {
-    public Task<BlogQr> Execute(GetBlogByBusinessIdQuery query);
+    public Task<BlogQr> Execute(GetBlogByIdQuery query);
 }

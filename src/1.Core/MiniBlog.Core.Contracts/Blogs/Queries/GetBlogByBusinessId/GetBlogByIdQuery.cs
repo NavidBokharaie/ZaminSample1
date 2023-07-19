@@ -2,7 +2,7 @@
 
 namespace MiniBlog.Core.Contracts.Blogs.Queries.GetBlogByBusinessId;
 
-public class GetBlogByBusinessIdQuery : IQuery<BlogQr>
+public class GetBlogByIdQuery : IQuery<BlogQr>
 {
     public Guid BlogBusinessId { get; set; }
 }

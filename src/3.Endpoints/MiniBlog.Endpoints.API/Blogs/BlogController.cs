@@ -13,8 +13,8 @@ namespace MiniBlog.Endpoints.API.Blogs
             => await Create<CreateBlogCommand, Guid>(createBlog);
 
         [HttpGet("[action]")]
-        public async Task<IActionResult> GetBlogByBusinessId(GetBlogByBusinessIdQuery query)
-            => await Query<GetBlogByBusinessIdQuery, BlogQr>(query);
+        public async Task<IActionResult> GetBlogByBusinessId(GetBlogByIdQuery query)
+            => await Query<GetBlogByIdQuery, BlogQr>(query);
 
         [HttpGet("/Clear")]
         public bool Clear()

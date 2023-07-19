@@ -12,7 +12,7 @@ public class BlogQueryRepository : BaseQueryRepository<MiniblogQueryDbContext>, 
 	{
 	}
 
-	public async Task<BlogQr> Execute(GetBlogByBusinessIdQuery query)
+	public async Task<BlogQr> Execute(GetBlogByIdQuery query)
 		=> await _dbContext.Blogs.Select(c => new BlogQr()
 		{
 			Id = c.Id,

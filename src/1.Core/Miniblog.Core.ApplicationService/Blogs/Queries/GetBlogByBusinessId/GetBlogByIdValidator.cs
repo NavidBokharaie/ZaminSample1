@@ -3,12 +3,12 @@ using MiniBlog.Core.Contracts.Blogs.Queries.GetBlogByBusinessId;
 using Zamin.Extensions.Translations.Abstractions;
 
 namespace MiniBlog.Core.ApplicationService.Blogs.Queries.GetBlogByBusinessId;
-public class GetBlogByBusinessIdValidator : AbstractValidator<GetBlogByBusinessIdQuery>
+public class GetBlogByIdValidator : AbstractValidator<GetBlogByIdQuery>
 {
-    public GetBlogByBusinessIdValidator(ITranslator translator)
+    public GetBlogByIdValidator(ITranslator translator)
     {
         RuleFor(query => query.BlogBusinessId)
             .NotEmpty()
-            .WithMessage(translator["Required", nameof(GetBlogByBusinessIdQuery.BlogBusinessId)]);
+            .WithMessage(translator["Required", nameof(GetBlogByIdQuery.BlogBusinessId)]);
     }
 }
