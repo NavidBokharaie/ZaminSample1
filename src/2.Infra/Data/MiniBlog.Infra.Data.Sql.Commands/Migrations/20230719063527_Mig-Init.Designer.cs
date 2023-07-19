@@ -12,17 +12,18 @@ using MiniBlog.Infra.Data.Sql.Commands.Common;
 namespace MiniBlog.Infra.Data.Sql.Commands.Migrations
 {
     [DbContext(typeof(MiniblogCommandDbContext))]
-    [Migration("20221212082824_init-with-outbox")]
-    partial class initwithoutbox
+    [Migration("20230719063527_Mig-Init")]
+    partial class MigInit
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.5")
+                .HasAnnotation("ProductVersion", "7.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("MiniBlog.Core.Domain.Blogs.Entities.Blog", b =>
                 {
@@ -30,7 +31,7 @@ namespace MiniBlog.Infra.Data.Sql.Commands.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<Guid>("BusinessId")
                         .HasColumnType("uniqueidentifier");
@@ -62,13 +63,38 @@ namespace MiniBlog.Infra.Data.Sql.Commands.Migrations
                     b.ToTable("Blogs");
                 });
 
-            modelBuilder.Entity("MiniBlog.Core.Domain.Blogs.Entities.Person", b =>
+            modelBuilder.Entity("MiniBlog.Core.Domain.OldTable1s.Entities.OldTable1", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("ccOldTable1");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<Guid>("BusinessId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OldTable1s", (string)null);
+                });
+
+            modelBuilder.Entity("MiniBlog.Core.Domain.People.Entities.Person", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<Guid>("BusinessId")
                         .HasColumnType("uniqueidentifier");
@@ -100,13 +126,13 @@ namespace MiniBlog.Infra.Data.Sql.Commands.Migrations
                     b.ToTable("People");
                 });
 
-            modelBuilder.Entity("Zamin.Extensions.Events.Outbox.Core.Model.OutBoxEventItem", b =>
+            modelBuilder.Entity("Zamin.Extensions.Events.Abstractions.OutBoxEventItem", b =>
                 {
                     b.Property<long>("OutBoxEventItemId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("OutBoxEventItemId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("OutBoxEventItemId"));
 
                     b.Property<string>("AccuredByUserId")
                         .IsRequired()

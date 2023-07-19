@@ -12,8 +12,8 @@ using MiniBlog.Infra.Data.Sql.Commands.Common;
 namespace MiniBlog.Infra.Data.Sql.Commands.Migrations
 {
     [DbContext(typeof(MiniblogCommandDbContext))]
-    [Migration("20230709130522_init")]
-    partial class init
+    [Migration("20230718145822_Mig_init")]
+    partial class Miginit
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,7 +63,32 @@ namespace MiniBlog.Infra.Data.Sql.Commands.Migrations
                     b.ToTable("Blogs");
                 });
 
-            modelBuilder.Entity("MiniBlog.Core.Domain.Blogs.Entities.Person", b =>
+            modelBuilder.Entity("MiniBlog.Core.Domain.OldTable1s.Entities.OldTable1", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("ccOldTable1");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<Guid>("BusinessId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OldTable1s", (string)null);
+                });
+
+            modelBuilder.Entity("MiniBlog.Core.Domain.People.Entities.Person", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
