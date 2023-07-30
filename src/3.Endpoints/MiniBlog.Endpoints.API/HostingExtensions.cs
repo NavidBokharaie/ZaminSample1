@@ -16,7 +16,7 @@ public static class HostingExtensions
 {
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
-        string cnn = "Server=.; Database=ZaminBlog2; User Id=sap; Password=6983; MultipleActiveResultSets = true; Encrypt = false";
+        string cnn = "Server=.; Database=ZaminSample1; User Id=sap; Password=6983; MultipleActiveResultSets = true; Encrypt = false";
         builder.Services.AddZaminParrotTranslator(c =>
         {
             c.ConnectionString = cnn;

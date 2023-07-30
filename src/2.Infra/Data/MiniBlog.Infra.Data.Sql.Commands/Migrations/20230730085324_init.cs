@@ -1,12 +1,11 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace MiniBlog.Infra.Data.Sql.Commands.Migrations
 {
     /// <inheritdoc />
-    public partial class MigInit : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -33,7 +32,7 @@ namespace MiniBlog.Infra.Data.Sql.Commands.Migrations
                     table.PrimaryKey("PK_Blogs", x => x.Id);
                 });
 
-            migrationBuilder.CreateTable(
+            /*migrationBuilder.CreateTable(
                 name: "OldTable1s",
                 columns: table => new
                 {
@@ -46,7 +45,15 @@ namespace MiniBlog.Infra.Data.Sql.Commands.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_OldTable1s", x => x.ccOldTable1);
-                });
+                });*/
+
+            migrationBuilder.AddColumn<Guid>(
+                name: "BusinessId",
+                table: "OldTable1s",
+                type: "uniqueidentifier",
+                nullable: false,
+                defaultValueSql: "NEWID()"
+            );
 
             migrationBuilder.CreateTable(
                 name: "OutBoxEventItems",
@@ -99,8 +106,12 @@ namespace MiniBlog.Infra.Data.Sql.Commands.Migrations
             migrationBuilder.DropTable(
                 name: "Blogs");
 
-            migrationBuilder.DropTable(
-                name: "OldTable1s");
+            /*migrationBuilder.DropTable(
+                name: "OldTable1s");*/
+            migrationBuilder.DropColumn(
+                name: "BusinessId",
+                table: "OldTable1s"
+            );
 
             migrationBuilder.DropTable(
                 name: "OutBoxEventItems",

@@ -12,8 +12,8 @@ using MiniBlog.Infra.Data.Sql.Commands.Common;
 namespace MiniBlog.Infra.Data.Sql.Commands.Migrations
 {
     [DbContext(typeof(MiniblogCommandDbContext))]
-    [Migration("20230718145822_Mig_init")]
-    partial class Miginit
+    [Migration("20230730085324_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
