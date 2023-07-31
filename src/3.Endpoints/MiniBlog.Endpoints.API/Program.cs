@@ -2,7 +2,13 @@ using MiniBlog.Endpoints.API;
 using MiniBlog.Endpoints.API.Extenstions;
 using Zamin.Extensions.DependencyInjection;
 
-var builder = ProgramExtensions.CreateHostBuilder(args, "appsettings.json", "appsettings.Development.json", "appsettings.saapp.json", "appsettings.serilog.json");
+var builder = ProgramExtensions.CreateHostBuilder(
+    args,
+    "appsettings.json",
+    "appsettings.Development.json",
+    "appsettings.saapp.json",
+    "appsettings.serilog.json"
+    );
 
 
 builder.RunWithSerilogExceptionHandling(() =>

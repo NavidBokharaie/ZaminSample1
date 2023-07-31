@@ -12,19 +12,19 @@ namespace MiniBlog.Endpoints.API.People;
 public class PersonController : BaseController
 {
     [HttpPost("[action]")]
-    public async Task<IActionResult> CreatePerson(CreatePersonCommand createPerson)
+    public async Task<IActionResult> CreatePerson([FromBody] CreatePersonCommand createPerson)
     {
         return await Create<CreatePersonCommand, Guid>(createPerson);
     }
 
     [HttpGet("[action]")]
-    public async Task<IActionResult> GetPerson(GetPersonQuery query)
+    public async Task<IActionResult> GetPerson([FromQuery] GetPersonQuery query)
     {
         return await Query<GetPersonQuery, PagedData<PersonDto>>(query);
     }
 
     [HttpGet("[action]")]
-    public async Task<IActionResult> GetPersonById(GetPersonByIdQuery query)
+    public async Task<IActionResult> GetPersonById([FromQuery] GetPersonByIdQuery query)
     {
         return await Query<GetPersonByIdQuery, PersonByIdDto>(query);
     }
