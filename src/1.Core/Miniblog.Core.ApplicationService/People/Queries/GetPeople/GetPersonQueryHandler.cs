@@ -1,6 +1,5 @@
 ﻿using MiniBlog.Core.Contracts.People.Queries;
 using MiniBlog.Core.Contracts.People.Queries.GetPeople;
-using MiniBlog.Core.Contracts.People.Queries.GetPerson;
 using Zamin.Core.ApplicationServices.Queries;
 using Zamin.Core.Contracts.ApplicationServices.Queries;
 using Zamin.Core.Contracts.Data.Queries;
@@ -18,7 +17,7 @@ public class GetPersonQueryHandler : QueryHandler<GetPersonQuery, PagedData<Pers
 
     public override async Task<QueryResult<PagedData<PersonDto>>> Handle(GetPersonQuery query)
     {
-        var people = await _personQueryRepository.Select(query);
+        var people = await _personQueryRepository.SelectAsync(query);
         return await ResultAsync(people);
     }
 }

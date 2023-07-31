@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MiniBlog.Core.Contracts.People.Commands.CreatePerson;
 using MiniBlog.Core.Contracts.People.Queries.GetPeople;
-using MiniBlog.Core.Contracts.People.Queries.GetPerson;
 using MiniBlog.Core.Contracts.People.Queries.GetPersonById;
 using Zamin.Core.Contracts.Data.Queries;
 using Zamin.EndPoints.Web.Controllers;

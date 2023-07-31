@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MiniBlog.Core.Contracts.People.Queries;
 using MiniBlog.Core.Contracts.People.Queries.GetPeople;
-using MiniBlog.Core.Contracts.People.Queries.GetPerson;
 using MiniBlog.Core.Contracts.People.Queries.GetPersonById;
 using MiniBlog.Infra.Data.Sql.Queries.Common;
 using Zamin.Core.Contracts.Data.Queries;
@@ -19,7 +18,7 @@ public class PersonQueryRepository : BaseQueryRepository<MiniblogQueryDbContext>
     {
         _dbContext = dbContext;
     }
-    public async Task<PersonByIdDto> Select(GetPersonByIdQuery query)
+    public async Task<PersonByIdDto?> SelectAsync(GetPersonByIdQuery query)
     {
         return await _dbContext.People.Select(c => new PersonByIdDto()
         {
@@ -29,50 +28,40 @@ public class PersonQueryRepository : BaseQueryRepository<MiniblogQueryDbContext>
             LastName = c.LastName
         }).FirstOrDefaultAsync(c => c.BusinessId.Equals(query.BusinessId));
     }
-    public async Task<PagedData<PersonDto>> Select(GetPersonQuery dto)
+    public async Task<PagedData<PersonDto>> SelectAsync(GetPersonQuery dto)
     {
         #region Query
-        var query = _dbContext.People.AsQueryable();
+        var entities = _dbContext.People.AsQueryable();
         #endregion
 
         #region Filters
-        query = query.WhereIf(dto.FirstName != null, p => p.FirstName.Contains(dto.FirstName));
-        query = query.WhereIf(dto.LastName != null, p => p.LastName.Contains(dto.LastName));
-        query = query.WhereIf(dto.BusinessId != Guid.Empty, m => m.BusinessId == dto.BusinessId);
+        entities = entities.WhereIf(dto.FirstName != null, p => p.FirstName.Contains(dto.FirstName));
+        entities = entities.WhereIf(dto.LastName != null, p => p.LastName.Contains(dto.LastName));
+        entities = entities.WhereIf(dto.BusinessId != Guid.Empty, m => m.BusinessId == dto.BusinessId);
 
-        query = query.WhereIf(dto.CreatedDateTime != null, m => m.CreatedDateTime == dto.CreatedDateTime);
-        query = query.WhereIf(dto.ModifiedDateTime != null, m => m.ModifiedDateTime == dto.ModifiedDateTime);
-        query = query.WhereIf(dto.CreatedByUserId != null, m => m.CreatedByUserId == dto.CreatedByUserId);
-        query = query.WhereIf(dto.ModifiedByUserId != null, m => m.ModifiedByUserId == dto.ModifiedByUserId);
+        entities = entities.WhereIf(dto.CreatedDateTime != null, m => m.CreatedDateTime == dto.CreatedDateTime);
+        entities = entities.WhereIf(dto.ModifiedDateTime != null, m => m.ModifiedDateTime == dto.ModifiedDateTime);
+        entities = entities.WhereIf(dto.CreatedByUserId != null, m => m.CreatedByUserId == dto.CreatedByUserId);
+        entities = entities.WhereIf(dto.ModifiedByUserId != null, m => m.ModifiedByUserId == dto.ModifiedByUserId);
 
-        query = dto.SortBy != null ? query.OrderByField(dto.SortBy, dto.SortAscending) : query;
-        query = dto.PageNumber >= 0 ? query.Skip((dto.PageNumber - 1) * dto.PageSize) : query;
-        query = dto.PageSize >= 0 ? query.Take(dto.PageSize) : query;
         #endregion
 
         #region Result
-        var select = query
-            .Select(c => new PersonDto
-            {
-                Id = c.Id,
-                BusinessId = c.BusinessId,
-                FirstName = c.FirstName,
-                LastName = c.LastName,
-
-                CreatedByUserId = c.CreatedByUserId,
-                CreatedByUserName = null,
-                ModifiedByUserId = c.ModifiedByUserId,
-                ModifiedByUserName = null,
-                CreatedDateTime = c.CreatedDateTime,
-                ModifiedDateTime = c.ModifiedDateTime
-            });
-        var result = new PagedData<PersonDto>
+        PagedData<PersonDto> result = await entities.ToPagedData(dto, c => new PersonDto
         {
-            TotalCount = dto.NeedTotalCount ? query.Count() : -1,
-            PageNumber = dto.PageNumber,
-            PageSize = dto.PageSize,
-            QueryResult = select.ToList()
-        };
+            Id = c.Id,
+            BusinessId = c.BusinessId,
+            FirstName = c.FirstName,
+            LastName = c.LastName,
+
+            CreatedByUserId = c.CreatedByUserId,
+            CreatedByUserName = null,
+            ModifiedByUserId = c.ModifiedByUserId,
+            ModifiedByUserName = null,
+            CreatedDateTime = c.CreatedDateTime,
+            ModifiedDateTime = c.ModifiedDateTime
+        });
+
         return result;
         #endregion
     }

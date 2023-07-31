@@ -18,7 +18,7 @@ public class GetPersonByIdHandler : QueryHandler<GetPersonByIdQuery, PersonByIdD
 
     public override async Task<QueryResult<PersonByIdDto>> Handle(GetPersonByIdQuery query)
     {
-        var person = await _personQueryRepository.Select(query);
+        var person = await _personQueryRepository.SelectAsync(query);
         return Result(person);
     }
 }
