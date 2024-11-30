@@ -1,6 +1,6 @@
-﻿namespace Core.Contracts.Tests.Queries.GetTestById;
+﻿namespace Core.Contracts.Tests.Queries.GetTests;
 
-public class TestByIdDto
+public class TestDto
 {
     public int Id { get; set; }
     public string FirstName { get; set; }

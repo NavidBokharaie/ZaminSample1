@@ -1,5 +1,5 @@
 using Core.Contracts.Tests.Queries;
-using Core.Contracts.Tests.Queries.GetTestById;
+using Core.Contracts.Tests.Queries.GetTests;
 
 namespace Infra.Data.Sql.Queries.Tests;
 
@@ -9,11 +9,11 @@ public class TestQueryRepository : BaseQueryRepository<ZaminSample1QueryDbContex
     public TestQueryRepository(ZaminSample1QueryDbContext dbContext) : base(dbContext)
     {
     }
-    public async Task<IEnumerable<TestByIdDto>> SelectTestByIdAsync(GetTestByIdQuery dto)
+    public async Task<IEnumerable<TestDto>> SelectAsync(GetTestQuery dto)
     {
         #region 
         var q = (from test in _dbContext.Tests
-                 select new TestByIdDto()
+                 select new TestDto()
                  {
                      Id = test.Id,
                      FirstName = test.FirstName,

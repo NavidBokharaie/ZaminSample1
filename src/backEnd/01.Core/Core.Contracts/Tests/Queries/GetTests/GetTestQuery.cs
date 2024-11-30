@@ -1,6 +1,6 @@
-﻿namespace Core.Contracts.Tests.Queries.GetTestById;
+﻿namespace Core.Contracts.Tests.Queries.GetTests;
 
-public class GetTestByIdQuery : IQuery<IEnumerable<TestByIdDto>>
+public class GetTestQuery : IQuery<IEnumerable<TestDto>>
 {
     public int Id { get; set; }
     public string FirstName { get; set; }

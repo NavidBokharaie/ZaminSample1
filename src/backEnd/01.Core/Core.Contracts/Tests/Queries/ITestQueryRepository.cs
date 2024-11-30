@@ -1,8 +1,8 @@
-using Core.Contracts.Tests.Queries.GetTestById;
+using Core.Contracts.Tests.Queries.GetTests;
 
 namespace Core.Contracts.Tests.Queries;
 
 public interface ITestQueryRepository : IQueryRepository
 {
-    Task<IEnumerable<TestByIdDto>> SelectTestByIdAsync(GetTestByIdQuery dto);
+    Task<IEnumerable<TestDto>> SelectAsync(GetTestQuery dto);
 }
