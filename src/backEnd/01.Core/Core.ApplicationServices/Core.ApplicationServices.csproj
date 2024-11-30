@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Remove="SystemConfigs\**" />
+		<Compile Remove="TanzimatSystemForoshs\**" />
+		<EmbeddedResource Remove="SystemConfigs\**" />
+		<EmbeddedResource Remove="TanzimatSystemForoshs\**" />
+		<None Remove="SystemConfigs\**" />
+		<None Remove="TanzimatSystemForoshs\**" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Zamin.Core.ApplicationServices" Version="8.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Core.Contracts\Core.Contracts.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<Using Include="Zamin.Core.ApplicationServices.Queries" />
+		<Using Include="Zamin.Core.ApplicationServices.Commands" />
+		<Using Include="Zamin.Extensions.Translations.Abstractions" />
+		<Using Include="Zamin.Utilities" />
+		<Using Include="Zamin.Core.Contracts.ApplicationServices.Queries" />
+		<Using Include="Zamin.Core.Contracts.ApplicationServices.Queries" />
+		<Using Include="Zamin.Core.Contracts.ApplicationServices.Commands" />
+		<Using Include="Zamin.Core.Domain.ValueObjects" />
+		<Using Include="Zamin.Core.Contracts.Data.Queries" />
+		<Using Include="Zamin.Core.Contracts.ApplicationServices.Events" />
+		<Using Include="Zamin.Core.RequestResponse.Commands" />
+		<Using Include="Zamin.Core.RequestResponse.Queries" />
+		<Using Include="Zamin.Core.RequestResponse.Common" />
+	</ItemGroup>
+</Project>

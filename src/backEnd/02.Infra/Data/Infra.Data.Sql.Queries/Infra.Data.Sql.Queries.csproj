@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="BouncyCastle.NetCore" Version="2.2.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Zamin.Infra.Data.Sql.Queries" Version="8.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\01.Core\Core.Contracts\Core.Contracts.csproj" />
+		<ProjectReference Include="..\Infra.Data.Sql.Commands\Infra.Data.Sql.Commands.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<Using Include="Microsoft.EntityFrameworkCore" />
+		<Using Include="Zamin.Core.Contracts.Data.Queries" />
+		<Using Include="Zamin.Infra.Data.Sql.Queries" />
+		<Using Include="Zamin.Utilities.Extensions" />
+		<Using Include="Infra.Data.Sql.Queries.Common" />
+		<Using Include="Zamin.Core.RequestResponse.Queries" />
+		<Using Include="Zamin.Extensions.Translations.Abstractions" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Remove="TanzimatSystemForosh\**" />
+	  <EmbeddedResource Remove="TanzimatSystemForosh\**" />
+	  <None Remove="TanzimatSystemForosh\**" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="Zamin.Core.Domain" Version="8.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<Using Include="Zamin.Core.Domain.Entities" />
+		<Using Include="Zamin.Core.Domain.ValueObjects" />
+		<Using Include="Zamin.Core.Domain.Events" />
+		<Using Include="Zamin.Core.Domain.Exceptions" />
+	</ItemGroup>
+</Project>

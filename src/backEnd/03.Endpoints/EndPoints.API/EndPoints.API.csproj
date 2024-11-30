@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Moq" Version="4.20.70" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+		<PackageReference Include="Zamin.EndPoints.Web" Version="8.0.0" />
+		<PackageReference Include="Zamin.Extensions.Caching.Distributed.Sql" Version="8.0.0" />
+		<PackageReference Include="Zamin.Extensions.Caching.InMemory" Version="8.0.0" />
+		<PackageReference Include="Zamin.Extensions.MessageBus.MessageInbox" Version="8.0.0" />
+		<PackageReference Include="Zamin.Extensions.MessageBus.MessageInbox.Dal.Dapper" Version="8.0.0" />
+		<PackageReference Include="Zamin.Extensions.ObjectMappers.AutoMapper" Version="8.0.0" />
+		<PackageReference Include="Zamin.Extensions.Serializers.Microsoft" Version="8.0.0" />
+		<PackageReference Include="Zamin.Extensions.Translations.Parrot" Version="8.0.0" />
+		<PackageReference Include="Zamin.Extensions.UsersManagement" Version="8.0.0" />
+		<PackageReference Include="Zamin.Utilities.SoftwarePartDetector" Version="8.0.0" />
+		<PackageReference Include="Zamin.Utilities.SerilogRegistration" Version="8.0.0" />
+		<PackageReference Include="Zamin.Utilities.OpenTelemetryRegistration" Version="7.0.0-beta.1" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\01.Core\Core.ApplicationServices\Core.ApplicationServices.csproj" />
+		<ProjectReference Include="..\..\01.Core\Core.DomainServices\Core.DomainServices.csproj" />
+		<ProjectReference Include="..\..\02.Infra\Data\Infra.Data.Sql.Commands\Infra.Data.Sql.Commands.csproj" />
+		<ProjectReference Include="..\..\02.Infra\Data\Infra.Data.Sql.Queries\Infra.Data.Sql.Queries.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<Using Include="Microsoft.AspNetCore.Mvc" />
+		<Using Include="Zamin.Core.RequestResponse.Queries" />
+		<Using Include="Zamin.Core.Contracts.Data.Commands" />
+		<Using Include="Zamin.Core.Contracts.Data.Queries" />
+		<Using Include="Zamin.EndPoints.Web.Controllers" />
+	</ItemGroup>
+</Project>

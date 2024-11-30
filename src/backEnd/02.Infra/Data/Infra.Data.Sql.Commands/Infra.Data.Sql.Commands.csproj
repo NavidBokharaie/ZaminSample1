@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Zamin.Extensions.Events.Outbox.Dal.EF" Version="8.0.0" />
+		<PackageReference Include="Zamin.Infra.Data.Sql.Commands" Version="8.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\01.Core\Core.Contracts\Core.Contracts.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<Using Include="Zamin.Core.Domain.ValueObjects" />
+		<Using Include="Infra.Data.Sql.Commands.Common" />
+		<Using Include="Microsoft.EntityFrameworkCore" />
+		<Using Include="Microsoft.EntityFrameworkCore.Metadata.Builders" />
+	</ItemGroup>
+</Project>
