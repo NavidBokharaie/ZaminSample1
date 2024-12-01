@@ -1,8 +1,10 @@
+using Core.Domain.Persons.Entities;
 using Core.Domain.Tests.Entities;
 using Infra.Data.Sql.Commands.Common.Extensions;
 using Infra.Data.Sql.Commands.Common.OutboxEventItems;
 using Zamin.Extensions.Events.Abstractions;
 using Zamin.Infra.Data.Sql.Commands;
+//SqlCommandsCommandDbContextUsing
 
 namespace Infra.Data.Sql.Commands.Common;
 
@@ -18,7 +20,8 @@ public partial class ZaminSample1CommandDbContext : BaseCommandDbContext
     #region DbSets
     public DbSet<OutBoxEventItem> OutBoxEventItems { get; set; }
     public DbSet<Test> Tests { get; set; }
-    //SqlCommandsCommandDbContextDbSet
+            public DbSet<Person> Persons { get; set; }
+//SqlCommandsCommandDbContextDbSet
     #endregion
 
     #region overrides

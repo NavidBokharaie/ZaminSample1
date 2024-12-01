@@ -9,7 +9,8 @@ public partial class ZaminSample1QueryDbContext : BaseQueryDbContext
     }
 
     public virtual DbSet<Test> Tests { get; set; }
-    //SqlQueriesQueryDbContextDbSet
+            public virtual DbSet<Person> Persons { get; set; }
+//SqlQueriesQueryDbContextDbSet
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
