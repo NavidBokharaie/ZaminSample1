@@ -4,6 +4,7 @@ using Infra.Data.Sql.Commands.Common.Extensions;
 using Infra.Data.Sql.Commands.Common.OutboxEventItems;
 using Zamin.Extensions.Events.Abstractions;
 using Zamin.Infra.Data.Sql.Commands;
+using Core.Domain.Banks.Entities;
 //SqlCommandsCommandDbContextUsing
 
 namespace Infra.Data.Sql.Commands.Common;
@@ -21,6 +22,7 @@ public partial class ZaminSample1CommandDbContext : BaseCommandDbContext
     public DbSet<OutBoxEventItem> OutBoxEventItems { get; set; }
     public DbSet<Test> Tests { get; set; }
             public DbSet<Person> Persons { get; set; }
+        public DbSet<Bank> Banks { get; set; }
 //SqlCommandsCommandDbContextDbSet
     #endregion
 
