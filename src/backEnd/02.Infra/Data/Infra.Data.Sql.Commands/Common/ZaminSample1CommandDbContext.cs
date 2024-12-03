@@ -23,6 +23,7 @@ public partial class ZaminSample1CommandDbContext : BaseCommandDbContext
     public DbSet<Test> Tests { get; set; }
             public DbSet<Person> Persons { get; set; }
         public DbSet<Bank> Banks { get; set; }
+        public DbSet<Hesab> Hesabs { get; set; }
 //SqlCommandsCommandDbContextDbSet
     #endregion
 

@@ -12,6 +12,9 @@ public class Bank : AggregateRoot<int>
     public DateTime CreatedDate { get; private set; }
 
 
+
+private List<Hesab> _hesabs = new List<Hesab>();
+public IReadOnlyCollection<Hesab> Hesabs => _hesabs.ToList();
 //EntityPropertiesReplacementText
     #endregion
 
@@ -57,5 +60,35 @@ public class Bank : AggregateRoot<int>
         );
     #endregion
 
+
+#region Hesabs
+public Hesab AddHesab(
+        int hesabNumber,
+        string codeCenter,
+        string telNumber,
+        string address,
+        int bankId
+)
+{
+    var entity = Hesab.Create(
+            hesabNumber,
+            codeCenter,
+            telNumber,
+            address,
+            bankId
+    );
+    _hesabs.Add(entity);
+    AddEvent(new HesabAdded(
+        entity.Id,
+            entity.HesabNumber,
+            entity.CodeCenter,
+            entity.TelNumber,
+            entity.Address,
+            entity.BankId
+    ));
+
+    return entity;
+}
+#endregion
 //EntityMethodsReplacementText
 }

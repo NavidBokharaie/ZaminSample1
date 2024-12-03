@@ -14,6 +14,7 @@ public class BankConfig : IEntityTypeConfiguration<Bank>
         builder.HasKey(e => e.Id);
 		//builder.Property(c => c.Id).HasColumnName("ccBank");
 
+builder.HasMany<Hesab>().WithOne().HasPrincipalKey(c => c.Id).HasForeignKey("BankId");
 //EntityCommandConfigReplacementText
 	}
 }

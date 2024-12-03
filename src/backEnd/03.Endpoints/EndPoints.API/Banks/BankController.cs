@@ -4,6 +4,10 @@ using Core.Contracts.Banks.Queries.GetBanks;
 using Core.Contracts.Banks.Queries.GetBankById;
 using Zamin.Core.Contracts.Data.Queries;
 using Zamin.EndPoints.Web.Controllers;
+
+using Core.Contracts.Banks.Queries.GetHesabById;
+using Core.Contracts.Banks.Queries.GetHesabs;
+using Core.Contracts.Banks.Commands.AddHesab;
 //EntityControllerUsingReplacementText
 
 namespace Endpoints.API.Banks;
@@ -29,6 +33,27 @@ public class BankController : BaseController
         return await Query<GetBankByIdQuery, BankByIdDto>(query);
     }
 
+
+
+#region Hesabs
+[HttpPost("createHesab")]
+public async Task<IActionResult> CreateHesab([FromBody] AddHesabCommand createHesab)
+{
+    return await Create<AddHesabCommand, int>(createHesab);
+}
+
+[HttpGet("getHesabs")]
+public async Task<IActionResult> GetHesab([FromQuery] GetHesabQuery query)
+{
+    return await Query<GetHesabQuery, PagedData<HesabDto>>(query);
+}
+
+[HttpGet("getHesabById")]
+public async Task<IActionResult> GetHesabById([FromQuery] GetHesabByIdQuery query)
+{
+    return await Query<GetHesabByIdQuery, HesabByIdDto>(query);
+}
+#endregion
 
 //EntityControllerMethodsReplacementText
 }
